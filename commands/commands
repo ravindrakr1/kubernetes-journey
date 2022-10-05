@@ -1,0 +1,8 @@
+-- get logs
+kubectl get pods -n 33051-tcfe-dev | awk '/tcfe-db-liquibase-#profile#/{print $1}' | xargs kubectl logs -c tcfe-db-liquibase-#profile# -n 33051-tcfe-dev > logs.txt
+
+-- delete deployment
+kubectl get deployments -n 33051-tcfe-dev | awk '/tcfe-db-liquibase-#profile#/{print $1}' | xargs kubectl delete -n 33051-tcfe-dev deployment || true
+
+
+
